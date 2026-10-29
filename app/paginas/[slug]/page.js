@@ -17,11 +17,13 @@ export default async function Page({ params }) {
   const doc = await getContent("paginas", slug);
   if (!doc) notFound();
   return (
-    <article>
-      <p className="eyebrow">Página editorial</p>
-      <h1>{doc.frontmatter.title}</h1>
-      <p className="lead">{doc.frontmatter.lead}</p>
-      <EditorialContent source={doc.content} />
-    </article>
+    <div className="container">
+      <article>
+        <p className="eyebrow">Página editorial</p>
+        <h1>{doc.frontmatter.title}</h1>
+        <p className="lead">{doc.frontmatter.lead}</p>
+        <EditorialContent source={doc.content} />
+      </article>
+    </div>
   );
 }

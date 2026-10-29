@@ -40,36 +40,47 @@ export default async function Page({ params }) {
   const { content } = doc;
   const frontmatter = doc.frontmatter ?? {};
   const name = productName(frontmatter);
-  const category = hasText(frontmatter.category)
-    ? frontmatter.category
-    : null;
+  const category = hasText(frontmatter.category) ? frontmatter.category : null;
   const description = hasText(frontmatter.description)
     ? frontmatter.description
     : null;
-  const showImage = hasText(frontmatter.image) && hasText(frontmatter.alt);
+  const showImage =
+    hasText(frontmatter.image) && hasText(frontmatter.alt);
 
   return (
-    <article className="product-detail">
-      <Link className="product-detail__back" href="/#produtos">
-        Voltar para os produtos
-      </Link>
+    <div className="container">
+      <article className="product-detail">
+        <Link className="product-detail__back" href="/#produtos">
+          Voltar para os produtos
+        </Link>
 
-      {showImage ? (
-        <div className="product-detail__media">
-          <Image
-            src={frontmatter.image}
-            alt={frontmatter.alt}
-            width={800}
-            height={600}
-            sizes="(min-width: 800px) 800px, 100vw"
-          />
+        <div
+          className={
+            showImage
+              ? "product-detail__grid"
+              : "product-detail__grid product-detail__grid--single"
+          }
+        >
+          {showImage ? (
+            <div className="product-detail__media">
+              <Image
+                src={frontmatter.image}
+                alt={frontmatter.alt}
+                width={1200}
+                height={900}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+              />
+            </div>
+          ) : null}
+
+          <div className="product-detail__info">
+            {category ? <p className="eyebrow">{category}</p> : null}
+            <h1>{name}</h1>
+            {description ? <p className="lead">{description}</p> : null}
+            <EditorialContent source={content} />
+          </div>
         </div>
-      ) : null}
-
-      {category ? <p className="eyebrow">{category}</p> : null}
-      <h1>{name}</h1>
-      {description ? <p className="lead">{description}</p> : null}
-      <EditorialContent source={content} />
-    </article>
+      </article>
+    </div>
   );
 }

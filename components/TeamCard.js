@@ -7,9 +7,9 @@ export default function TeamCard({ slug, name, position, image, alt, children })
         <Image
           src={image}
           alt={alt}
-          width={600}
-          height={600}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          width={800}
+          height={800}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
         />
       </div>
       <div className="team-card__body">

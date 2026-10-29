@@ -15,9 +15,9 @@ export default function ProductCard({
         <Image
           src={image}
           alt={alt}
-          width={800}
-          height={600}
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          width={1200}
+          height={900}
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
         />
       </div>
       <div className="product-card__body">

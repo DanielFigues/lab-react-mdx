@@ -7,7 +7,7 @@ export const metadata = {
     default: `${BRAND.name} — ${BRAND.tagline}`,
     template: `%s | ${BRAND.name}`,
   },
-  description: `Cafés e acessórios da ${BRAND.name}, torrefação artesanal em Minas Gerais.`,
+  description: `Conheça os cafés e acessórios da ${BRAND.name}.`,
 };
 
 export default function RootLayout({ children }) {
@@ -26,10 +26,10 @@ export default function RootLayout({ children }) {
             <nav aria-label="Navegação principal">
               <ul className="site-nav">
                 <li>
-                  <Link href="/#empresa">Empresa</Link>
+                  <Link href="/#produtos">Produtos</Link>
                 </li>
                 <li>
-                  <Link href="/#produtos">Produtos</Link>
+                  <Link href="/#empresa">Empresa</Link>
                 </li>
                 <li>
                   <Link href="/#equipe">Equipe</Link>
@@ -38,15 +38,19 @@ export default function RootLayout({ children }) {
             </nav>
           </div>
         </header>
-        <main id="conteudo" className="container">
-          {children}
-        </main>
+        <main id="conteudo">{children}</main>
         <footer className="site-footer">
           <div className="container site-footer__inner">
-            <p>
-              {BRAND.name} · {BRAND.tagline}
+            <div>
+              <p className="site-footer__brand">
+                {BRAND.name} · {BRAND.tagline}
+              </p>
+              <p>Torrefação artesanal em Minas Gerais.</p>
+            </div>
+            <p className="site-footer__credit">
+              Fotos: Wikimedia Commons —{" "}
+              <Link href="/atribuicoes.txt">Créditos das imagens</Link>.
             </p>
-            <p>Torrefação artesanal em Minas Gerais.</p>
           </div>
         </footer>
       </body>
